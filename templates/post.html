@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock title %}
+{% block content %}
+{% if not users %}
+<h3>Não há Posts</h3>
+{% else %}
+
+{% for p in users %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="card-title">{{p.title}}</h5>
+    </div>
+
+    <div class="card-body">
+        <h6 class="card-title"> {{p.description}}</h6>
+        {{p.body}}
+    </div>
+
+    <div class="card-footer">
+        <a href="{% url 'users_page' p.author_id%}"> Autor</a> |
+        <a href="{% url 'user_post_detail' p.pk%}"> Post</a>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+{% endblock content %}

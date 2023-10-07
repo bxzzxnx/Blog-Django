@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block title%} Post Detail{% endblock title%}
+
+{% block content%}
+<h1>Post</h1>
+
+<p class="fw-bold">Title</p>
+<p>{{post.title}}</p>
+<p class="fw-bold">Description</p>
+<p>{{post.description}}</p>
+<p class="fw-bold">Body</p>
+<p class="text-break">{{post.body}}</p>
+
+
+<a href="{% url 'users_posts'%}"> Voltar para todos os posts</a>
+|
+<a href="{% url 'delete_post' post.pk%}"> Deletar</a>
+|
+<a href="{% url 'update_post' post.pk%}"> Editar</a>
+
+</div>
+
+{% endblock content%}

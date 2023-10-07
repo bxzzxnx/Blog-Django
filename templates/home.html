@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title%} Home Page {% endblock title%}
+
+
+{% block content%}
+<div class="jumbotron bg-light p-4">
+    <h1 class="display-4"> Blog Django</h1>
+    <p class="lead">
+        <a href="{% url 'users_posts'%}" class="btn btn-primary btn-lg" role="button">
+            Todos os Posts
+        </a>
+    </p>
+</div>
+
+
+{% endblock content%}

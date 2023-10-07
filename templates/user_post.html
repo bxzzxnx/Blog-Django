@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block title %} Users Page {% endblock title%}
+
+{% block content %}
+<h1>Autor {{ user.username }}</h1>
+{% if not user.posts.all %}
+<h4>Esse autor ainda não possui nenhuma post</h4>
+{% else %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Post Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Link</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Updated at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in user.posts.all %}
+        <tr>
+            <th scope="row">{{ p.id }}</th>
+            <td>{{ p.title }}</td>
+            <td><a href="{% url 'user_post_detail' p.pk %}">Link</a></td>
+            <td>{{p.created_at}}</td>
+            <td>{{p.updated_at}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock content %}
